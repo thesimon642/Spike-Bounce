@@ -22,9 +22,9 @@ public class SpikeWallController : MonoBehaviour
             //keeps constant velocity
             rb.velocity = new Vector2(moveSpeed, 0);
             //keeps on screen
-            if (thisWall.transform.position.x <= mainCamera.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect + 1)
+            if (thisWall.transform.position.x <= mainCamera.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect + 0.5f)
             {
-                thisWall.position = new Vector3(mainCamera.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect + 1, mainCamera.transform.position.y, thisWall.position.z);
+                thisWall.position = new Vector3(mainCamera.transform.position.x - Camera.main.orthographicSize * Camera.main.aspect +0.5f , mainCamera.transform.position.y, thisWall.position.z);
             }
         }
         else

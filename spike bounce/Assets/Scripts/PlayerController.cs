@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 
     private float xMovement;
     private float yMovement;
+
     void Awake()
     {
         instance = this;
@@ -102,7 +103,6 @@ public class PlayerController : MonoBehaviour
             //controlling movement speed
 
             SetXandYMovement();
-
             rb.velocity = new Vector2(xMovement, yMovement);
 
             previousVerticalSpeed = rb.velocity.y;
@@ -188,7 +188,9 @@ public class PlayerController : MonoBehaviour
 
     void SetXandYMovement()
     {
-        xMovement = Input.GetAxis("Horizontal") * moveSpeed;
+
+
+        xMovement = DetectTouchControls() * moveSpeed;
 
         if (bounce == 1)
         {
@@ -198,5 +200,40 @@ public class PlayerController : MonoBehaviour
         {
             yMovement = rb.velocity.y;
         }
+    }
+
+    int DetectTouchControls() 
+    {
+        if (ButtonController.buttonsHaveBeenPressed)
+        {
+            return 0;
+        }
+        
+
+        float screenCentre = Camera.main.transform.position.x - Camera.main.orthographicSize* Camera.main.aspect / 2;
+
+        bool leftTouch = false;
+        bool rightTouch = false;
+        Touch touch;
+        for (int i = 0; i < Input.touchCount; i++)
+        {
+            touch = Input.GetTouch(i);
+            //Debug.Log("---");
+            //Debug.Log(Camera.main.orthographicSize);
+            //Debug.Log(Camera.main.orthographicSize * Camera.main.aspect);
+            //Debug.Log(rb.position.x);
+            //Debug.Log(touch.position.x);
+            if (Camera.main.ScreenToWorldPoint(touch.position).x > screenCentre)
+            { rightTouch = true; }
+            else
+            { leftTouch = true; }
+        }
+
+        if (leftTouch == rightTouch)
+        { return 0; }
+        else if (leftTouch)
+        { return -1; }
+        else
+        { return 1; }
     }
 }

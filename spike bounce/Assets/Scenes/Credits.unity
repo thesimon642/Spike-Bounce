@@ -306,7 +306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.00077248, y: -0.000068665}
+  m_AnchoredPosition: {x: 0.00012432, y: -0.000041658}
   m_SizeDelta: {x: 678.89, y: 205}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1560273388
@@ -342,14 +342,12 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Credits:
-
-    Created By Simon Powell
+  m_Text: 'Created By Simon Powell
 
     Art - Created in GIMP
 
-    Sound
-    FX - "Sound FX - Retro Pack" by Zero Rare
+    Sound FX - "Sound
+    FX - Retro Pack" by Zero Rare
 
     Made for - Mini Jam 77: Courage
 
@@ -372,6 +370,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3049733707696659863, guid: 93f267753bf886a489c8994be8defd5f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049733707696659863, guid: 93f267753bf886a489c8994be8defd5f, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049733707696659863, guid: 93f267753bf886a489c8994be8defd5f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049733707696659863, guid: 93f267753bf886a489c8994be8defd5f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049733707696659863, guid: 93f267753bf886a489c8994be8defd5f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -104
+      objectReference: {fileID: 0}
+    - target: {fileID: 3049733707696659863, guid: 93f267753bf886a489c8994be8defd5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -32
+      objectReference: {fileID: 0}
     - target: {fileID: 4781662855185852905, guid: 93f267753bf886a489c8994be8defd5f, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -749,7 +771,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -175}
+  m_AnchoredPosition: {x: 0, y: -135}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &5424524501012342793
@@ -902,9 +924,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 360, y: 185}
+  m_AnchoredPosition: {x: 350, y: 154}
   m_SizeDelta: {x: 40, y: 40}
-  m_Pivot: {x: 0.49999988, y: 0.49999982}
+  m_Pivot: {x: 0.49999985, y: 0.49999985}
 --- !u!114 &5424524501131329714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1201,8 +1223,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -9.3469, y: 102.5}
-  m_SizeDelta: {x: 678.889, y: 205}
+  m_AnchoredPosition: {x: -9.3469, y: 82.50002}
+  m_SizeDelta: {x: 678.889, y: 165}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5971848021188269603
 MonoBehaviour:
@@ -1383,7 +1405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100}
+  m_AnchoredPosition: {x: 0, y: -80}
   m_SizeDelta: {x: 250, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8591770757811718144
