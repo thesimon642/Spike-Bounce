@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
 
     public ParticleSystem deathParticles;
     public static int score;
+
+    private float xMovement;
+    private float yMovement;
     void Awake()
     {
         instance = this;
@@ -46,7 +49,13 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, 0f)) ;
     }
 
-    // Update is called once per frame
+
+    private void Update()
+    {
+        //detects movement
+    }
+
+
     void FixedUpdate()
     {
         if (PlayerController.justDied == false)
@@ -90,16 +99,11 @@ public class PlayerController : MonoBehaviour
                 bounce = 1;
                 doABounce = false;
             }
-            //controlling sideways movement
+            //controlling movement speed
 
-            if (bounce == 1)
-            {
-                rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, bounceSpeed);
-            }
-            else
-            {
-                rb.velocity = new Vector2(Input.GetAxis("Horizontal") * moveSpeed, rb.velocity.y);
-            }
+            SetXandYMovement();
+
+            rb.velocity = new Vector2(xMovement, yMovement);
 
             previousVerticalSpeed = rb.velocity.y;
 
@@ -109,14 +113,7 @@ public class PlayerController : MonoBehaviour
             {
                 if (!didIjustBecomePurple)
                 {
-                    //controls turning 45 degrees
-                    if (!amIPurple)
-                    { transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, transform.rotation.z + 45f)); }
-                    else
-                    { transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, transform.rotation.z)); }
-
-                    didIjustBecomePurple = true;
-                    amIPurple = !amIPurple;
+                    ToggleColour();
                 }
             }
             else
@@ -138,33 +135,68 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            DeathRoutine();
+        }
+    }
 
-            switch (deathPhase)
-            {
-                case 0:
-                    rb.velocity = new Vector2(0f, 0f);
-                    rb.gravityScale = 0f;
-                    deathPhase = 1;
-                    hitSound.Play();
-                    break;
-                case 1:
-                    deathphase1counter += 1f;
-                    if (deathphase1counter >= 50f)
-                    { deathPhase = 2; }
-                    break;
-                case 2:
-                    explodeSound.Play();
-                    deathParticles.Play();
-                    thisSpriteRender.sprite = null;
-                    deathPhase = 3;
-                    deathphase1counter = 0f;
-                    break;
-                case 3:
-                    deathphase1counter += 1f;
-                    if (deathphase1counter >= 180)
-                    { deathPhase = 4; }
-                    break;
-            }
+
+
+    public void ToggleColour()
+    {
+        if (PlayerController.justDied == false)
+        {
+            //controls turning 45 degrees
+            if (!amIPurple)
+            { transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, transform.rotation.z + 45f)); }
+            else
+            { transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, transform.rotation.z)); }
+
+            didIjustBecomePurple = true;
+            amIPurple = !amIPurple;
+        }
+    }
+
+    void DeathRoutine()
+    {
+        switch (deathPhase)
+        {
+            case 0:
+                rb.velocity = new Vector2(0f, 0f);
+                rb.gravityScale = 0f;
+                deathPhase = 1;
+                hitSound.Play();
+                break;
+            case 1:
+                deathphase1counter += 1f;
+                if (deathphase1counter >= 50f)
+                { deathPhase = 2; }
+                break;
+            case 2:
+                explodeSound.Play();
+                deathParticles.Play();
+                thisSpriteRender.sprite = null;
+                deathPhase = 3;
+                deathphase1counter = 0f;
+                break;
+            case 3:
+                deathphase1counter += 1f;
+                if (deathphase1counter >= 180)
+                { deathPhase = 4; }
+                break;
+        }
+    }
+
+    void SetXandYMovement()
+    {
+        xMovement = Input.GetAxis("Horizontal") * moveSpeed;
+
+        if (bounce == 1)
+        {
+            yMovement = bounceSpeed;
+        }
+        else
+        {
+            yMovement = rb.velocity.y;
         }
     }
 }
