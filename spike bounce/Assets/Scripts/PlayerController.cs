@@ -165,6 +165,7 @@ public class PlayerController : MonoBehaviour
                 rb.gravityScale = 0f;
                 deathPhase = 1;
                 hitSound.Play();
+                PlayerPrefs.SetInt("High Score",ScoreSaver.highScore);
                 break;
             case 1:
                 deathphase1counter += 1f;

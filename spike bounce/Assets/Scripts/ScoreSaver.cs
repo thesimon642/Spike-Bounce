@@ -13,7 +13,10 @@ public class ScoreSaver : MonoBehaviour
     {
         DontDestroyOnLoad(this);
         if (instance == null)
-        { instance = this; }
+        {
+            instance = this;
+            highScore = PlayerPrefs.GetInt("High Score");
+        }
         else
         { Destroy(gameObject); }
     }
